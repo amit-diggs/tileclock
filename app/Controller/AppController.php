@@ -48,27 +48,27 @@ class AppController extends Controller {
             'authenticate' => array(
                 'Form' => array(
                     'fields' => array('username' => 'email_address'),
-					'scope' => array('status' => '0')
+                    'scope' => array('status' => '0')
                 )
             )
         ),
     );
-	
-	public function beforeFilter() {
-		$sessionData = $this->Auth->user();
-	    $emp_id = $sessionData['id'];
-		$user_type = $sessionData['user_type'];
-		$first_name = $sessionData['first_name'];
-		$last_name = $sessionData['last_name'];
-		$created_by = $sessionData['created_by'];
-		if($created_by=='0')
-		{
-			$created_by = $emp_id;
-		}
-		else
-		{
-			$created_by = $created_by;
-		}
-		$this->set(compact('emp_id','user_type','first_name','last_name','created_by'));
+
+    public function beforeFilter() {
+        $sessionData = $this->Auth->user();
+        $emp_id = $sessionData['id'];
+        $user_type = $sessionData['user_type'];
+        $first_name = $sessionData['first_name'];
+        $last_name = $sessionData['last_name'];
+        $created_by = $sessionData['created_by'];
+        if ($created_by == '0') {
+            $created_by = $emp_id;
+        } else {
+            $created_by = $created_by;
+        }
+        $this->set(compact('emp_id', 'user_type', 'first_name', 'last_name', 'created_by'));
     }
+
 }
+
+?>
