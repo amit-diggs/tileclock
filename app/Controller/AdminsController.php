@@ -563,8 +563,4 @@ class AdminsController extends AppController {
     }
 
 }
-
-
-echo "This is test1212121asasas";
-
 ?>
