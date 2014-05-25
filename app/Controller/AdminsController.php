@@ -383,7 +383,8 @@ class AdminsController extends AppController {
                 )));
                 $page = "no_paging";
                 $this->set('page', $page);
-            } elseif ($from != "" && $to != "" && $emp != "" && $job_id != "") {
+            } 
+            elseif ($from != "" && $to != "" && $emp != "" && $job_id != "") {
                 $tile = $this->Tile->find('all', array(
                     'conditions' => array('User.created_by' => $created_by, 'Tile.in_date >=' => $from,
                         'Tile.in_date <=' => $to,
@@ -393,7 +394,8 @@ class AdminsController extends AppController {
                 ));
                 $page = "no_paging";
                 $this->set('page', $page);
-            } elseif ($from != "" && $to != "" && $emp == "" && $job_id != "") {
+            } 
+            elseif ($from != "" && $to != "" && $emp == "" && $job_id != "") {
                 $tile = $this->Tile->find('all', array(
                     'conditions' => array('User.created_by' => $created_by, 'Tile.in_date >=' => $from,
                         'Tile.in_date <=' => $to,
@@ -402,14 +404,16 @@ class AdminsController extends AppController {
                 ));
                 $page = "no_paging";
                 $this->set('page', $page);
-            } elseif ($from == "" && $to == "" && $emp == "" && $job_id != "") {
+            } 
+            elseif ($from == "" && $to == "" && $emp == "" && $job_id != "") {
                 $tile = $this->Tile->find('all', array(
                     'conditions' => array('User.created_by' => $created_by, 'Tile.job_id' => $job_id
                     ), 'order' => 'Tile.id DESC',
                 ));
                 $page = "no_paging";
                 $this->set('page', $page);
-            } elseif ($from == "" && $to == "" && $emp != "" && $job_id != "") {
+            } 
+            elseif ($from == "" && $to == "" && $emp != "" && $job_id != "") {
                 $tile = $this->Tile->find('all', array(
                     'conditions' => array('User.created_by' => $created_by, 'Tile.job_id' => $job_id,
                         'Tile.emp_id' => $emp
@@ -417,7 +421,8 @@ class AdminsController extends AppController {
                 ));
                 $page = "no_paging";
                 $this->set('page', $page);
-            } else {
+            } 
+            else {
                 $this->paginate = array(
                     'conditions' => $condition,
                     'order' => 'Tile.id DESC',
@@ -439,7 +444,8 @@ class AdminsController extends AppController {
                 }
                 $this->set('emp_name', $emp_name);
             }
-        } else {
+        } 
+        else {
             $date = date('Y-m-d');
             $firstDay = date('Y-m-01');
             $lastDay = date("Y-m-t", strtotime($date));
@@ -557,5 +563,8 @@ class AdminsController extends AppController {
     }
 
 }
+
+
+echo "This is test1212121asasas";
 
 ?>
