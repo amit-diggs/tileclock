@@ -1,0 +1,1 @@
+<div class="message-holder"><div class="suc"><?php echo $message; ?></div></div>

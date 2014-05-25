@@ -1,0 +1,1 @@
+<div class="message-holder"><div class="err"><?php echo $message; ?></div></div>
