@@ -90,6 +90,7 @@ $firstDay = date('Y-m-01');
                 <div id="textbox"><?php echo $this->Form->input("Tile.job_id",array('type'=>'select',"options"=>array($job),'empty'=>'All','div'=>false,'label'=>false,'style'=>'width:145px'));?>
                 <?php echo $this->Form->submit('Submit', array('div' => false,'formnovalidate' => true,'class'=>'submitButton','name'=>'search'));?>
 
+                    
                 <?php if($user_type=='admin'){ ?>
                     <div class="export_report">
                         <a href="#" class="export">Export</a>

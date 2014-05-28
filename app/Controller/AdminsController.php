@@ -339,7 +339,6 @@ class AdminsController extends AppController {
         }
 
         $employee = Set::combine($employee, '{n}.User.id', array('{0} {1}', '{n}.User.first_name', '{n}.User.last_name'));
-
         $job = $this->Job->find('list', array(
             "fields" => 'id,company_name',
             'conditions' => array('Job.created_by' => $created_by),
