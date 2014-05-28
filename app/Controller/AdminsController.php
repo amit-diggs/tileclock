@@ -328,14 +328,15 @@ class AdminsController extends AppController {
                 "fields" => array('User.id,User.first_name,User.last_name'),
                 'conditions' => array('User.created_by' => $emp_id, 'User.status' => 0, 'User.user_type' => 'user')
             ));
+            
         }
-        /* else
-          {
-          $employee=$this->User->find('all',array(
-          "fields"=>array('User.id,User.first_name,User.last_name'),
-          'conditions'=>array('User.created_by'=>$created_by,'User.status'=>0,'User.user_type'=>'user','User.id'=>$emp_id)
-          ));
-          } */
+        else
+        {
+            $employee=$this->User->find('all',array(
+            "fields"=>array('User.id,User.first_name,User.last_name'),
+            'conditions'=>array('User.created_by'=>$created_by,'User.status'=>0,'User.user_type'=>'user','User.id'=>$emp_id)
+            ));
+        }
 
         $employee = Set::combine($employee, '{n}.User.id', array('{0} {1}', '{n}.User.first_name', '{n}.User.last_name'));
 
