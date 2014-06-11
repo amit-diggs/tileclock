@@ -59,7 +59,7 @@ $(".export").click(function(){
 	exportTableToCSV.apply(this, [$('#dvData>table'), 'export.csv']);
 });
 
-$.clock.locale = {"pt":{"weekdays":["Domingo","Segunda-feira", "TerÃ§a-feira","Quarta-feira","Quinta-feira","Sexta-feira", "SÃ¡bado"],"months":["Janeiro","Fevereiro","MarÃ§o","Abril", "Maio","Junho","Julho","Agosto","Setembro","October","Novembro", "Dezembro"] } };
+$.clock.locale = {"pt":{"weekdays":["Domingo","Segunda-feira", "Terça-feira","Quarta-feira","Quinta-feira","Sexta-feira", "Sábado"],"months":["Janeiro","Fevereiro","Março","Abril", "Maio","Junho","Julho","Agosto","Setembro","October","Novembro", "Dezembro"] } };
 $(".clock1").clock({"calendar" : "false"});
 $("#clock1").clock({"usenumbers" : "true"});
 customtimestamp = new Date().getTime() + 1123200000+10800000+14000;

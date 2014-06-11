@@ -159,13 +159,12 @@ class AdminsController extends AppController {
             } else {
                 $this->set('errors', $this->Job->invalidFields());
             }
-
-            $this->paginate = array(
-                'conditions' => array('Job.created_by' => $emp_id),
-                'order' => 'Job.id DESC',
-                'limit' => 20
-            );
-            $jobList = $this->paginate('Job');
+            
+            $jobList = $this->Job->find('all',
+                array(
+                  'conditions' => array('Job.created_by' => $emp_id),
+                  'order' => 'Job.company_name asc'
+                ));
             $this->set(compact('jobList', 'title'));
         } else {
             $this->redirect('add_job');
@@ -237,22 +236,16 @@ class AdminsController extends AppController {
         $emp_id = $this->viewVars['emp_id'];
         $user_type = $this->viewVars['user_type'];
         $created_by = $this->viewVars['created_by'];
-        if ($user_type != 'admin') {
-            $this->set('emp_id', $emp_id);
-
-            $job_tile = $this->Job->find('all', array(
-                'conditions' => array('Job.created_by' => $created_by, 'Job.status' => 0),
-                'order' => 'Job.company_name ASC',
-            ));
-            $this->set('job_tile', $job_tile);
-
-            $active = $this->Tile->find('first', array(
-                'conditions' => array('Tile.status' => 1, 'Tile.emp_id' => $emp_id)
-            ));
-            $this->set(compact('active', 'title'));
-        } else {
-            $this->redirect('create_emp');
-        }
+        $this->set('emp_id', $emp_id);
+        $job_tile = $this->Job->find('all', array(
+            'conditions' => array('Job.created_by' => $created_by, 'Job.status' => 0),
+            'order' => 'Job.company_name ASC',
+        ));
+        $this->set('job_tile', $job_tile);
+        $active = $this->Tile->find('first', array(
+            'conditions' => array('Tile.status' => 1, 'Tile.emp_id' => $emp_id)
+        ));
+        $this->set(compact('active', 'title'));
     }
 
     function getJobId($jobId) {
@@ -322,11 +315,19 @@ class AdminsController extends AppController {
         $emp_id = $this->viewVars['emp_id'];
         $user_type = $this->viewVars['user_type'];
         $created_by = $this->viewVars['created_by'];
+        if($user_type=='admin')
+        {
+            $created_by = 0;
+        }
+        else
+        {
+            $created_by = $created_by;
+        }
         $this->set(compact('emp_id', 'user_type', 'title'));
         if ($user_type == 'admin') {
             $employee = $this->User->find('all', array(
                 "fields" => array('User.id,User.first_name,User.last_name'),
-                'conditions' => array('User.created_by' => $emp_id, 'User.status' => 0, 'User.user_type' => 'user')
+                'conditions' => array('User.status' => 0,'NOT'=>array('User.user_type'=>'super_admin'))
             ));
             
         }
@@ -334,7 +335,7 @@ class AdminsController extends AppController {
         {
             $employee=$this->User->find('all',array(
             "fields"=>array('User.id,User.first_name,User.last_name'),
-            'conditions'=>array('User.created_by'=>$created_by,'User.status'=>0,'User.user_type'=>'user','User.id'=>$emp_id)
+            'conditions'=>array('User.created_by'=>$created_by,'User.status'=>0,'User.id'=>$emp_id)
             ));
         }
 
@@ -375,7 +376,8 @@ class AdminsController extends AppController {
                 )));
                 $page = "no_paging";
                 $this->set('page', $page);
-            } elseif ($from != "" && $to != "" && $emp != "" && $job_id == "") {
+            } 
+            elseif ($from != "" && $to != "" && $emp != "" && $job_id == "") {
                 $tile = $this->Tile->find('all', array(
                     'conditions' => array('User.created_by' => $created_by, 'Tile.in_date >=' => $from,
                         'Tile.in_date <=' => $to,
@@ -422,7 +424,8 @@ class AdminsController extends AppController {
                 $page = "no_paging";
                 $this->set('page', $page);
             } 
-            else {
+            else 
+            {
                 $this->paginate = array(
                     'conditions' => $condition,
                     'order' => 'Tile.id DESC',
@@ -445,38 +448,39 @@ class AdminsController extends AppController {
                 $this->set('emp_name', $emp_name);
             }
         } 
-        else {
+        else 
+        {
             $date = date('Y-m-d');
             $firstDay = date('Y-m-01');
             $lastDay = date("Y-m-t", strtotime($date));
-            //if($user_type=='admin')
-            //{
-            //$this->paginate = array(
-            //'conditions'=>array('Tile.created_by'=>$created_by,'Tile.in_date >='=>$firstDay,'Tile.in_date <='=>$lastDay),
-            //'order' =>'Tile.id DESC',
-            //'limit' => 30,
-            //);
-            //}
-            //else
-            //{
+            
+            if($user_type=='admin')
+            {
+                $conditions[] = array('Tile.in_date >=' => $firstDay, 'Tile.in_date <=' => $lastDay);
+            }
+            
+            else 
+            {
+                $conditions[] = array('Tile.emp_id' => $emp_id,'Tile.in_date >=' => $firstDay, 'Tile.in_date <=' => $lastDay);
+            }
+            
             $this->paginate = array(
-                'conditions' => array('Tile.created_by' => $created_by, 'Tile.in_date >=' => $firstDay, 'Tile.in_date <=' => $lastDay),
+                'conditions' => $conditions,
                 'order' => 'Tile.id DESC',
                 'limit' => 30,
             );
-            //}
+            
             $tile = $this->paginate('Tile');
             $this->set(compact('tile'));
             $count = sizeof($tile);
             $this->set('count', $count);
             $pageCount = $this->params['paging']['Tile']['pageCount'];
-            if ($pageCount > 0) {
+            if ($pageCount > 0){
                 $page = "paging";
             } else {
                 $page = "no_paging";
             }
             $this->set('page', $page);
-            
         }
     }
 

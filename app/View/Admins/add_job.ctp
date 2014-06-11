@@ -1,17 +1,17 @@
 <div id="content-wrapper" style='margin-top:20px;'>
 <?php echo $this->Form->create('Admins',array('action' => 'add_job'));?>
-	<div id="heading">Add New Job</div>
+    <div id="heading">Add New Job</div>
     <?php echo $this->Session->flash(); ?>
-	<div id="form-holder">
-		<div id="label">Company Name :</div>
-		<div id="textbox"><?php echo $this->Form->input('Job.company_name',array('label'=>false,'div'=>false,'size'=>50,'placeholder'=>'Company Name..')); ?></div>
-        <div class="asterisk">(*)</div>
-	</div>
     <div id="form-holder">
-		<div id="label">Tile Color :</div>
-		<div id="textbox"><?php echo $this->Form->input('Job.bg_color',array('label'=>false,'div'=>false,'size'=>50,'placeholder'=>'Tile color..')); ?><?php echo $this->Form->input('Job.created_by',array('value'=>$emp_id,'type'=>'hidden')); ?></div>
+        <div id="label">Tile Name :</div>
+        <div id="textbox"><?php echo $this->Form->input('Job.company_name',array('label'=>false,'div'=>false,'size'=>50,'placeholder'=>'Tile Name....')); ?></div>
         <div class="asterisk">(*)</div>
-	</div>
+    </div>
+    <div id="form-holder">
+        <div id="label">Color :</div>
+        <div id="textbox"><?php echo $this->Form->input('Job.bg_color',array('id'=>'colorpickerField1','label'=>false,'div'=>false,'size'=>50,'placeholder'=>'color....')); ?><?php echo $this->Form->input('Job.created_by',array('value'=>$emp_id,'type'=>'hidden')); ?></div>
+        <div class="asterisk">(*)</div>
+    </div>
 	<?php echo $this->Form->submit('Save', array('div' => false,'formnovalidate' => true,'class'=>'submitButton'));?><br/>
 <?php print $this->Form->end();?> 
 </div>
@@ -49,13 +49,4 @@
                 </tbody>
             </table>
     </div>
-    <div class="paging"> <!--Pagination Start -->
-        <!-- Shows the next and previous links -->
-        <?php echo $this->Paginator->prev('« Previous', null, null, array('class' => 'disabled')); ?>
-        <!-- Shows the page numbers -->
-        <?php echo $this->Paginator->numbers(array('separator' => '','class'=>'paging-margin')); ?>
-        <?php echo $this->Paginator->next('Next »', null, null, array('class' => 'disabled')); ?>
-        <!-- prints X of Y, where X is current page and Y is number of pages -->
-        <?php echo $this->Paginator->counter(); ?>
-    </div> <!--Pagination End -->
 </div>   

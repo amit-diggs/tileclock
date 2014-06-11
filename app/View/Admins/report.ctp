@@ -1,13 +1,3 @@
-<?php
-
-/*****This is just for test******/ 
-
-//date_default_timezone_set("Asia/Dhaka");  //This is for local time zone
-//date_default_timezone_set("America/Los_Angeles"); //This time is for server
-
-/****This is just for test*****/				  
-?>
-
 <script type="text/javascript">
 function getDateValue(value)
 {
@@ -27,6 +17,7 @@ function getDateValue(value)
 </script>
 <?php 
 //This is for Week Start
+
 $current = date('N');
 $DaysToSunday = 7 - $current;
 $DaysFromMonday = $current - 1;
@@ -68,7 +59,7 @@ $firstDay = date('Y-m-01');
             <?php 
 			}
 			?>
-                <div id="label"> Employee </div>
+                <div id="label"> Team Member </div>
 					   <?php 
                     if($user_type=="admin")
                     {
@@ -86,7 +77,7 @@ $firstDay = date('Y-m-01');
             </div>
 
             <div id="form-holder" class="padding bottom-radius">
-                <div id="label"> Job Code </div>
+                <div id="label"> Tile Name </div>
                 <div id="textbox"><?php echo $this->Form->input("Tile.job_id",array('type'=>'select',"options"=>array($job),'empty'=>'All','div'=>false,'label'=>false,'style'=>'width:145px'));?>
                 <?php echo $this->Form->submit('Submit', array('div' => false,'formnovalidate' => true,'class'=>'submitButton','name'=>'search'));?>
 
@@ -106,7 +97,7 @@ $firstDay = date('Y-m-01');
                 <table class="border-none" style="background-color:#E0E0E0">
         <?php if(!empty($emp)) { if($emp_name!="empty"){ ?> 
                     <tr>
-                        <td colspan="2" class="border-none">Employee Name :  <?php echo $emp_name;?> </td>
+                        <td colspan="2" class="border-none">Team Member :  <?php echo $emp_name;?> </td>
                     </tr>
         <?php } } ?>
         <?php 
@@ -138,7 +129,7 @@ $firstDay = date('Y-m-01');
                 </table>
                 <table>
                     <tr>
-                <?php if(empty($emp)) { ?><th class="emp-name">Employee Name</th><?php } else { ?>
+                <?php if(empty($emp)) { ?><th class="emp-name">Team Member: </th><?php } else { ?>
                         <th style="display:none"> </th>
                 <?php } ?>
                         <th class="in_date">InDate</th>
@@ -146,7 +137,7 @@ $firstDay = date('Y-m-01');
                         <th>OutTime</th>
                         <th class="hrs">Hours</th>
                         <th>Hours (hours:minutes)</th>
-                        <th class="j-code">JobCode</th>
+                        <th class="j-code">Tile Name</th>
                 <?php if($user_type==0){ ?>
                         <th>Action</th>
                 <?php } ?>
@@ -190,7 +181,7 @@ $firstDay = date('Y-m-01');
 			   //$out_date_format = date('m/d/Y',strtotime($out_time));
 				  ?>
                     <tr>
-					<?php if(empty($emp)) { ?><td class="emp-name"><?php echo $tempTile['User']['first_name']?> <?php echo $tempTile['User']['last_name']; ?></td><?php } else { ?>
+			<?php if(empty($emp)) { ?><td class="emp-name"><?php echo $tempTile['User']['first_name']?> <?php echo $tempTile['User']['last_name']; ?></td><?php } else { ?>
                         <td style="display:none"> </td>
 					<?php } ?>
                         <td class="in_date"><?php echo $in_date_format; ?></td>

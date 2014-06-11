@@ -28,15 +28,19 @@ $cakeDescription = __d('cake_dev', '::Welcome to timeclock::');
    <?php 
     echo $this->Html->meta('icon');
     echo $this->Html->css('style');
-	echo $this->fetch('meta');
+    echo $this->fetch('meta');
     echo $this->fetch('css');
     echo $this->fetch('script');
     ?>
     <script class="jsbin" src="<?php echo $this->webroot; ?>js/jquery.min.js"></script>
     <script class="jsbin" src="<?php echo $this->webroot; ?>js/tcal.js"></script>
     <script type="text/javascript">var myBaseUrl = '<?php echo $this->base;?>';</script>
+    <script type="text/javascript" src="<?php echo $this->webroot; ?>js/jquery.js"></script>
     <script type="text/javascript" src="<?php echo $this->webroot; ?>js/main.js"></script>
-    <script type="text/javascript">var reloadPage = '<?php echo $this->element('job'); ?>';</script><!-- Reload Page -->
+    <script type="text/javascript" src="<?php echo $this->webroot; ?>js/colpick.js"></script>
+    <script type="text/javascript" src="<?php echo $this->webroot; ?>js/eye.js"></script>
+    <script type="text/javascript" src="<?php echo $this->webroot; ?>js/utils.js"></script>
+    <script type="text/javascript" src="<?php echo $this->webroot; ?>js/layout.js?ver=1.0.2"></script>
 </head>
 
 <body>
