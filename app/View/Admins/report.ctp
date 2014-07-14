@@ -43,22 +43,21 @@ $current = date('N');
                 <input type="button" class="dateButton" value="This Month" onclick='getDateValue("<?php echo $firstDay; ?>,<?php echo $date; ?>")' />
             </div>
         </div>
-        <?php if ($user_type == "admin") { ?>
+        <?php //if ($user_type == "admin") : ?>
             <div id="form-holder" class="padding">
-            <?php } else { ?>
-            <div id="form-holder" style="display:none">
-                <?php } ?>
-                <div id="label"> Team Member </div>
-                <?php if ($user_type == "admin") { ?>
+            <?php //else : ?>
+            <!--<div id="form-holder" style="display:none">-->
+                <?php //endif ?>
+                <?php if ($user_type == "admin") : ?>
+                    <div id="label"> Team Member </div>
                     <div id="textbox" class="newt"><?php echo $this->Form->input("Tile.emp_id", array('type' => 'select', "options" => array($employee), 'empty' => 'All', 'div' => false, 'label' => false, 'style' => 'width:165px')); ?></div>
-                <?php } else { ?>
-                    <div id="textbox" class="newt"><?php echo $this->Form->input("Tile.emp_id", array('type' => 'select', "options" => array($employee), 'div' => false, 'label' => false, 'style' => 'width:165px')); ?></div>
-                <?php } ?>
+                <?php else : ?>
+                    <div id="label" style="display: none"> Team Member </div>
+                    <div id="textbox" style="display: none" class="newt"><?php echo $this->Form->input("Tile.emp_id", array('type' => 'select', "options" => array($employee), 'div' => false, 'label' => false, 'style' => 'width:165px')); ?></div>
+                <?php endif; ?>
                 <div id="label" class="newl"> Tile Name </div>
                 <div id="textbox"><?php echo $this->Form->input("Tile.job_id", array('type' => 'select', "options" => array($job), 'empty' => 'All', 'div' => false, 'label' => false, 'style' => 'width:145px')); ?>
                     <?php echo $this->Form->submit('Submit', array('div' => false, 'formnovalidate' => true, 'class' => 'submitButton', 'name' => 'search')); ?>
-
-
                     <?php if ($user_type == 'admin') { ?>
                         <div class="export_report">
                             <a href="#" class="export">Export</a>
@@ -66,6 +65,7 @@ $current = date('N');
                     <?php } ?>
                 </div>
             </div>
+            <?php print $this->Form->end(); ?>
             <div class="timereport">
                 <div class="tfirst">
                     <label for="thours">Total Hours: </label>
@@ -79,11 +79,6 @@ $current = date('N');
                     <span class="tvalue">657</span>
                 </div>
             </div>
-            <!-- <div id="form-holder" class="padding bottom-radius">
-                
-                
-            </div> -->
-            <?php print $this->Form->end(); ?>
 
         </div>
         <div class="clear"></div>

@@ -316,11 +316,6 @@ class AdminsController extends AppController {
         $emp_id = $this->viewVars['emp_id'];
         $user_type = $this->viewVars['user_type'];
         $created_by = $this->viewVars['created_by'];
-        if ($user_type == 'admin') {
-            $created_by = 0;
-        } else {
-            $created_by = $created_by;
-        }
         $this->set(compact('emp_id', 'user_type', 'title'));
         if ($user_type == 'admin') {
             $employee = $this->User->find('all', array(
@@ -341,6 +336,7 @@ class AdminsController extends AppController {
             'order' => array('Job.company_name' => 'ASC')
         ));
         $this->set(compact('employee', 'job'));
+       
 
         if (isset($this->request->data['search'])) {
             $from = $this->request->data['Tile']['from'];

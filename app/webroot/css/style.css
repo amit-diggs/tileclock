@@ -1583,8 +1583,9 @@ border:solid 1px red;
 .newt{
     width: 16px !important;
 }
-.newl{
-    width: 239px !important;
+.newl {
+    margin-left: 135px;
+    width: 90px !important;
 }
 
 .timereport {
