@@ -46,18 +46,15 @@ $current = date('N');
         <?php if ($user_type == "admin") { ?>
             <div id="form-holder" class="padding">
             <?php } else { ?>
-                <div id="form-holder" style="display:none">
+            <div id="form-holder" style="display:none">
                 <?php } ?>
                 <div id="label"> Team Member </div>
                 <?php if ($user_type == "admin") { ?>
-                    <div id="textbox"><?php echo $this->Form->input("Tile.emp_id", array('type' => 'select', "options" => array($employee), 'empty' => 'All', 'div' => false, 'label' => false, 'style' => 'width:165px')); ?></div>
+                    <div id="textbox" class="newt"><?php echo $this->Form->input("Tile.emp_id", array('type' => 'select', "options" => array($employee), 'empty' => 'All', 'div' => false, 'label' => false, 'style' => 'width:165px')); ?></div>
                 <?php } else { ?>
-                    <div id="textbox"><?php echo $this->Form->input("Tile.emp_id", array('type' => 'select', "options" => array($employee), 'div' => false, 'label' => false, 'style' => 'width:165px')); ?></div>
+                    <div id="textbox" class="newt"><?php echo $this->Form->input("Tile.emp_id", array('type' => 'select', "options" => array($employee), 'div' => false, 'label' => false, 'style' => 'width:165px')); ?></div>
                 <?php } ?>
-            </div>
-
-            <div id="form-holder" class="padding bottom-radius">
-                <div id="label"> Tile Name </div>
+                <div id="label" class="newl"> Tile Name </div>
                 <div id="textbox"><?php echo $this->Form->input("Tile.job_id", array('type' => 'select', "options" => array($job), 'empty' => 'All', 'div' => false, 'label' => false, 'style' => 'width:145px')); ?>
                     <?php echo $this->Form->submit('Submit', array('div' => false, 'formnovalidate' => true, 'class' => 'submitButton', 'name' => 'search')); ?>
 
@@ -69,7 +66,25 @@ $current = date('N');
                     <?php } ?>
                 </div>
             </div>
-            <?php print $this->Form->end(); ?> 
+            <div class="timereport">
+                <div class="tfirst">
+                    <label for="thours">Total Hours: </label>
+                    <span class="tvalue">32.85&nbsp;&nbsp;&nbsp;&nbsp;32 hr 52 min</span>
+                </div>
+                
+                <div class="hinside">
+                    <label for="hour">Hour: </label>
+                    <span class="tvalue">20</span>
+                    <label for="payment">Payment: </label>
+                    <span class="tvalue">657</span>
+                </div>
+            </div>
+            <!-- <div id="form-holder" class="padding bottom-radius">
+                
+                
+            </div> -->
+            <?php print $this->Form->end(); ?>
+
         </div>
         <div class="clear"></div>
         <div id="form-holder" style="background:none">

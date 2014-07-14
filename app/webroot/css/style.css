@@ -290,7 +290,7 @@ nav#top-navigation {
 
 {
 
-    width:240px;
+    width:110px;
 
     font-size:0.84em;
 
@@ -584,6 +584,7 @@ textarea#AdminAddress {
     font-size:0.79em;
     font-weight:bold;
     transition: background-color 0.1s linear 0s, color 0.1s linear 0s;
+    left: -52px;
 }
 
 .export_report:hover
@@ -1577,6 +1578,40 @@ border:solid 1px red;
 {
     background-color:#D8DFE3; /* L */
     font-weight:bold;
+}
+
+.newt{
+    width: 16px !important;
+}
+.newl{
+    width: 239px !important;
+}
+
+.timereport {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 2px solid #000000;
+    border-radius: 5px;
+    bottom: 0;
+    color: #7C8E98;
+    float: right;
+    padding: 10px 8px;
+    position: relative;
+    right: 32px;
+    top: -74px;
+    font-size: 0.84em;
+    font-weight: bold;
+}
+.tfirst, .hinside{
+    background-color: #e0e0e0 !important;
+    padding: 2px 3px;
+}
+.tfirst {
+    margin-bottom: 4px;
+}
+.hinside {
+    margin: auto;
+    text-align: center;
+    width: 70%;
 }
 
 @media screen and (max-width: 1000px) {
