@@ -118,7 +118,6 @@ nav#top-navigation {
 }
 
 .menu a:link,
-.menu a:active,
 .menu a:visited{
     display:block;
     padding: 13.5px 20px;
@@ -129,7 +128,9 @@ nav#top-navigation {
     font-size:1.2em;
     font-weight:500;
 }
-
+.menu a:active, .menu a:focus{
+    background-color: #b2bcc2 !important;
+}
 
 .menu a:hover{
     color: #ffffff;
@@ -153,7 +154,8 @@ nav#top-navigation {
     width: 12em;
     float: left;
     z-index: 1000;
-    border-bottom:solid 1px #fff;
+    background-color: #b2bcc2 !important;
+    /*border-bottom:solid 1px #fff;*/
 }
 
 .menu ul ul{
@@ -180,7 +182,9 @@ nav#top-navigation {
 .menu li li li li:hover ul{
     display:block;
     z-index:1000;
+    margin-top: 17px;
 }
+
 #content
 
 {

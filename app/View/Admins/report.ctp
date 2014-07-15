@@ -69,7 +69,7 @@ $current = date('N');
             <div class="timereport">
                 <div class="tfirst">
                     <label for="thours">Total Hours: </label>
-                    <span class="tvalue">32.85&nbsp;&nbsp;&nbsp;&nbsp;32 hr 52 min</span>
+                    <span class="tvalue"><?php echo '32.85 <span style="padding-left:6px">32 hr 52 min</span>'; ?></span>
                 </div>
                 
                 <div class="hinside">
