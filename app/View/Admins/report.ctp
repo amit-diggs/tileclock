@@ -17,8 +17,7 @@
 </script>
 <?php
 //This is for Week Start
-
-$current = date('N');
+    $current = date('N');
     $DaysToSunday = 7 - $current;
     $DaysFromMonday = $current - 1;
     $Sunday = date('Y-m-d', strtotime("+ {$DaysToSunday} Days"));
@@ -66,17 +65,63 @@ $current = date('N');
                 </div>
             </div>
             <?php print $this->Form->end(); ?>
+            <?php 
+        $totalTime1 = 0;
+        $totalTime2 = 0;
+        $thour = 0;
+        $t_hr = 0;
+        $t_min = 0;
+        $i = 1;
+        if (!empty($tile)) {
+            foreach ($tile as $tempTile) :
+                $time1 = $tempTile['Tile']['in_date'] . " " . $tempTile['Tile']['in_time'];
+                if ($tempTile['Tile']['out_date']) {
+                    $time2 = $tempTile['Tile']['out_date'] . " " . $tempTile['Tile']['out_time'];
+                    $out_time = $tempTile['Tile']['out_time'];
+                } else {
+                    date_default_timezone_set($tempTile['User']['location']);
+                    $time2 = date("Y-m-d h:i:s A");
+                    $out_time = date('h:i:s A');
+                }
+
+                $datetime1 = new DateTime($time1);
+                $datetime2 = new DateTime($time2);
+                $interval = $datetime1->diff($datetime2);
+                $timer = $interval->format('%h') . " hrs. " . $interval->format('%i') . " min";
+                $totalHour = round($interval->format('%h') + ($interval->format('%i') / 60), 2);
+
+                $hour = $interval->format('%h');
+                $min = $interval->format('%i');
+
+                $thour+=$totalHour;
+                $t_hr+=$hour;
+                $t_min+=$min;
+                $date_in = $tempTile['Tile']['in_date'];
+                $in_date_format = date('m/d/Y', strtotime($date_in));
+                //$out_date_format = date('m/d/Y',strtotime($out_time));
+            endforeach;
+            $t_val = $thour * $tempTile['User']['hourly_rate'];
+            $r_hr = floor($t_min / 60);
+            $tr_hr = $t_hr + $r_hr;
+        }
+        if (!isset($tr_hr)):
+            $tr_hr = '0';
+        endif;
+        
+        ?>
             <div class="timereport">
                 <div class="tfirst">
                     <label for="thours">Total Hours: </label>
-                    <span class="tvalue"><?php echo '32.85 <span style="padding-left:6px">32 hr 52 min</span>'; ?></span>
+                    <span class="tvalue"><?php echo ''.$thour.' <span style="padding-left:6px">'.$tr_hr . " hr " . ($t_min % 60) . " min".'</span>'; ?></span>
                 </div>
                 
                 <div class="hinside">
                     <label for="hour">Hour: </label>
-                    <span class="tvalue">20</span>
+                    <span class="tvalue"><?php if(isset($tempTile['User']['hourly_rate'])) : echo $tempTile['User']['hourly_rate']; else : echo "0"; endif; ?></span>
+                    <?php if($user_type=='admin') : ?>
                     <label for="payment">Payment: </label>
-                    <span class="tvalue">657</span>
+                    <span class="tvalue"><?php if(isset($t_val)) : echo abs($t_val); else : echo "0"; endif; ?></span>
+                    <?php endif; ?>
                 </div>
             </div>
 
@@ -224,10 +269,10 @@ $current = date('N');
         <?php if ($page != "no_paging") : ?>
             <div class="paging"> <!--Pagination Start -->
                 <!-- Shows the next and previous links -->
-                <?php echo $this->Paginator->prev('Â« Previous', null, null, array('class' => 'disabled')); ?>
+                <?php echo $this->Paginator->prev('« Previous', null, null, array('class' => 'disabled')); ?>
                 <!-- Shows the page numbers -->
                 <?php echo $this->Paginator->numbers(array('separator' => '', 'class' => 'paging-margin')); ?>
-                <?php echo $this->Paginator->next('Next Â»', null, null, array('class' => 'disabled')); ?>
+                <?php echo $this->Paginator->next('Next »', null, null, array('class' => 'disabled')); ?>
                 <!-- prints X of Y, where X is current page and Y is number of pages -->
                 <?php echo $this->Paginator->counter(); ?>
             </div> <!--Pagination End -->
