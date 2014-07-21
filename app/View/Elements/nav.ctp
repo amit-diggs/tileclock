@@ -7,19 +7,24 @@
                 if($user_type=="admin")
                 {
                         ?>
-                    <li><a href="#">TEAM</a>
+                    <li class="team"><a href="#">TEAM</a>
                             <ul>
-                              <li><?php echo $this->html->link("ADD MEMBER",  "/Admins/create_emp");?></a></li>
-                              <li><?php echo $this->html->link("MEMBER LIST",  "/Admins/employee_list");?></a></li>
+                              <li><?php echo $this->html->link("ADD MEMBER",  "/Admins/create_emp");?></li>
+                              <li><?php echo $this->html->link("MEMBER LIST",  "/Admins/employee_list");?></li>
                             </ul>
                     </li>
-                    <li><?php echo $this->html->link("Manage Tiles",  "/Admins/add_job");?></a></li>
+                    <li><?php echo $this->html->link("Manage Tiles",  "/Admins/add_job");?></li>
                     <?php 
                 }
                     ?>
-                    <li><?php echo $this->html->link("Tiles",  "/Admins/job_tile");?></a></li>
-                    <li><?php echo $this->html->link("Reports",  "/Admins/report");?></a></li>
-                    <li><?php echo $this->html->link("Feedback",  "/Admins/feedback");?></a></li>
+                    <li class="tiles"><?php
+                    echo $this->Html->link(
+                    $this->Html->tag('span','')."Tiles", 
+                    array('controller'=>'Admins','action'=>'job_tile'),
+                    array('escape'=>false)
+                    ); ?></li>
+                    <li class="reports"><?php echo $this->html->link($this->html->tag('span','')."Reports",  "/Admins/report", array('escape' => false));?></li>
+                    <li class="feedback"><?php echo $this->html->link($this->html->tag('span','')."Feedback",  "/Admins/feedback", array('escape' => false));?></li>
             </ul>
          </nav> <!-- #top-nagivation -->
         <?php if(!empty($emp_id)): ?>
@@ -37,7 +42,7 @@
             </div>
           
             <div class="name-con lout">
-                 <?php echo $this->html->link('LOGOUT', array('controller' => 'Users', 'action' => 'logout', array('class' => 'lclass'))); ?>
+                 <?php echo $this->html->link($this->html->tag('span','').'LOGOUT', array('controller' => 'Users', 'action' => 'logout', array('class' => 'lclass')), array('escape' => false)); ?>
             </div>
         </div>
         <?php endif; ?>

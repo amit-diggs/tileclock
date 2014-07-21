@@ -16,6 +16,7 @@ if (!empty($active)) {
 }
 ?>
 <div id="form-holder" class="wide" style="background:none">
+    <button class="stopb"><span></span>STOP</button>
     <div id="clock1" class="inactive"></div>
 <?php
 if (!empty($active)) {

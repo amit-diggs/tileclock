@@ -88,6 +88,9 @@ body{
 .enam, .lout{
     width: 41% !important;
 }
+.lout a{
+    color: #656E73 !important;
+}
 .enam{
     color: #7C7C7C;
     font-size: 72%;
@@ -133,7 +136,7 @@ nav#top-navigation {
     table-layout:auto;
     float:none;
     margin:auto;
-    right: 16px;
+    right: 30px;
 }
 
 
@@ -222,6 +225,39 @@ ul li:hover {
     margin-top: 17px;
 }
 
+.menu span{
+    background: url('../img/tileclock-icons-sprite.png');
+    float: left;
+    width: 15px;
+    height: 15px;
+    margin: 3px 3px 0 0;
+}
+.tiles span{
+    background-position: 77px 0px;
+}
+.reports span{
+    background-position: -47px 0;
+}
+.feedback span{
+    background-position: 33px 0;
+}
+.tiles a:hover span{
+    background-position: -18px -15px;
+}
+.reports a:hover span{
+    background-position: -47px -15px;
+}
+.feedback a:hover span{
+    background-position: -62px -15px;
+}
+.lout span{
+    background: url('../img/tileclock-icons-sprite.png') 17px 0;
+    float: left;
+    width: 15px;
+    height: 15px;
+    margin: 3px -1px 0 9px;
+    /*background-position: 0 0;*/
+}
 #content
 
 {
@@ -1239,6 +1275,32 @@ p.error em {
 }
 
 /*************Cake Default CSS**************/
+.stopb{
+    width: 102px;
+    height: 50px;
+    float: left;
+    position: relative;
+    left: 12px;
+    top: 15px;
+    background-color: #B52E25;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 0;
+    border: none;
+    font-weight: bold;
+}
+.wide button:hover{
+    opacity: 0.74;
+}
+.stopb span{
+    background: url('../img/tileclock-icons-sprite.svg') -42px -19px;
+    float: left;
+    width: 19px;
+    height: 19px;
+    margin: 3px 5px 0 4px;
+}
 #clock1
 {
     position:relative;
