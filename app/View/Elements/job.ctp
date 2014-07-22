@@ -16,19 +16,19 @@ if (!empty($active)) {
 }
 ?>
 <div id="form-holder" class="wide" style="background:none">
-    <button class="stopb"><span></span>STOP</button>
     <div id="clock1" class="inactive"></div>
-<?php
-if (!empty($active)) {
-    ?>
-        <div onclick="canceTimer()" id="cancelJob">Stop</div>
+    <?php
+    if (!empty($active)) {
+        ?>
+        <button class="stopb" onclick="canceTimer()" ><span></span>STOP</button>
+        <!--<div onclick="canceTimer()" id="cancelJob">Stop</div>-->
         <?php
     }
     if (!empty($active)) {
         ?>
         <div id="jobStatus">Job Code : <?php echo $active['Job']['company_name']; ?><br/>Timeclock : <?php echo $totalHour; ?></div>
     <?php } else { ?>
-        <div id="jobStatus">Job Code : Not Selected<br/>Timeclock : 0:00</div>
+        <div id="jobStatus">No Tiles Selected </div>
     <?php } ?>
     <div class="clear"></div>
     <ul class="job-tile">
@@ -46,9 +46,9 @@ if (!empty($active)) {
                 <li onclick="timer(<?php echo $tempJob['Job']['id']; ?>)" style="background-color: <?php echo "#" . $tempJob['Job']['bg_color']; ?>" class="active" id="sw_start">
                     <div class="line-br"><?php echo $tempJob['Job']['company_name']; ?></div></li>
                 <input type="hidden" name="emp_id" id="emp_id" value="<?php echo $emp_id; ?>"/>
-        <?php
-    } else {
-        ?>
+                <?php
+            } else {
+                ?>
                 <li onclick="timer(<?php echo $tempJob['Job']['id']; ?>)" style="background-color:<?php echo "#" . $tempJob['Job']['bg_color']; ?>">
                     <div class="line-br"><?php echo $tempJob['Job']['company_name']; ?></div></li>
                 <input type="hidden" name="emp_id" id="emp_id" value="<?php echo $emp_id; ?>"/>
