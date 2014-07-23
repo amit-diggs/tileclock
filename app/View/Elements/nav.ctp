@@ -9,11 +9,11 @@
                         ?>
                     <li class="team"><a href="#">TEAM</a>
                             <ul>
-                              <li><?php echo $this->html->link("ADD MEMBER",  "/Admins/create_emp");?></li>
-                              <li><?php echo $this->html->link("MEMBER LIST",  "/Admins/employee_list");?></li>
+                              <li><?php echo $this->html->link("Add Member",  "/Admins/create_emp");?></li>
+                              <li><?php echo $this->html->link("Member List",  "/Admins/employee_list");?></li>
                             </ul>
                     </li>
-                    <li><?php echo $this->html->link("Manage Tiles",  "/Admins/add_job");?></li>
+                    <li class="manage"><?php echo $this->html->link($this->html->tag('span','')."Manage Tiles",  "/Admins/add_job", array('escape' => false));?></li>
                     <?php 
                 }
                     ?>

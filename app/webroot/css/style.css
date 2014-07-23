@@ -82,7 +82,7 @@ body{
 .svglogo {
     left: 24px;
     position: relative;
-    top: 16px;
+    top: 15px;
     width: 160%;
 }
 .enam, .lout{
@@ -195,6 +195,7 @@ ul li:hover {
     z-index: 1000;
     background-color: #b2bcc2 !important;
     padding: 7px 11px !important;
+    text-transform: none !important;
     /*border-bottom:solid 1px #fff;*/
 }
 
@@ -241,6 +242,9 @@ ul li:hover {
 .feedback span{
     background-position: 33px 0;
 }
+.manage span{
+    background-position: -2px 0px;
+}
 .tiles a:hover span{
     background-position: -18px -15px;
 }
@@ -249,6 +253,9 @@ ul li:hover {
 }
 .feedback a:hover span{
     background-position: -62px -15px;
+}
+.manage a:hover span{
+    background-position: -2px -15px;
 }
 .lout span{
     background: url('../img/tileclock-icons-sprite.png') 17px 0;
@@ -1276,15 +1283,15 @@ p.error em {
 
 /*************Cake Default CSS**************/
 .stopb{
-    width: 102px;
-    height: 50px;
+    width: 86px;
+    height: 32px;
     float: left;
     position: relative;
     left: 12px;
     top: 15px;
     background-color: #B52E25;
     color: #fff;
-    font-size: 20px;
+    font-size: 17px;
     border-radius: 6px;
     cursor: pointer;
     padding: 0;
@@ -1295,11 +1302,11 @@ p.error em {
     opacity: 0.74;
 }
 .stopb span{
-    background: url('../img/tileclock-icons-sprite.svg') -42px -19px;
+    background: url('../img/tileclock-icons-sprite.png') -33px -15px;
     float: left;
-    width: 19px;
-    height: 19px;
-    margin: 3px 5px 0 4px;
+    width: 15px;
+    height: 15px;
+    margin: 3px 0px 0 4px;
 }
 #clock1
 {
@@ -1648,12 +1655,42 @@ border:solid 1px red;
     -moz-border-radius:5px;
     -webkit-border-radius:5px;
     padding:10px 13px; /* L */
-    background-color:#76a45d; /* L */
+    background-color:#91A1AE; /* L */
     font-weight:600; /* L */
     font-size:0.9em; /* L */
     color:#ffffff;
 }
-
+#activestate{
+    width:auto; /* L */
+    position:relative;
+    float:right;
+    border:none; /* L */
+    text-align:center;
+    margin: 15px 39px 15px 0;
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    padding:10px 13px; /* L */
+    background-color:#729C5C; /* L */
+    font-weight:600; /* L */
+    font-size:0.9em; /* L */
+    color:#ffffff;
+}
+.jobcode{
+    font-weight: normal !important;
+    padding-right: 8px;
+    
+}
+.divider{
+    border-right: 1px solid #fff;
+    display: inline-block;
+    height: 36px;
+    position: absolute;
+    top: 0;
+}
+.jobtime{
+    padding-left: 8px;
+}
 .line-br
 {
     width:180px;
@@ -1715,7 +1752,7 @@ border:solid 1px red;
 .hinside {
     margin: auto;
     text-align: center;
-    width: 73%;
+    width: 78%;
 }
 
 

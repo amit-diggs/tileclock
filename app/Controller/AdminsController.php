@@ -290,7 +290,7 @@ class AdminsController extends AppController {
             }
             echo "Your timer has started!";
         } else {
-            echo "Unable to start time,its already selected!";
+            echo "Unable to start time, its already selected!";
         }
     }
 
@@ -307,7 +307,7 @@ class AdminsController extends AppController {
             'Tile.status' => 1, 'Tile.emp_id' => $emp_id
                 )
         );
-        echo "Timer stopped succesfully,Thanks!";
+        echo "Timer stopped succesfully, Thanks!";
     }
 
     public function report() {

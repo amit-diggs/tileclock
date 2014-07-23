@@ -26,7 +26,7 @@ if (!empty($active)) {
     }
     if (!empty($active)) {
         ?>
-        <div id="jobStatus">Job Code : <?php echo $active['Job']['company_name']; ?><br/>Timeclock : <?php echo $totalHour; ?></div>
+        <div id="activestate"><span class="jobcode"><?php echo $active['Job']['company_name']; ?></span><span class="divider"></span><span class="jobtime"><?php echo $totalHour; ?></span></div>
     <?php } else { ?>
         <div id="jobStatus">No Tiles Selected </div>
     <?php } ?>
